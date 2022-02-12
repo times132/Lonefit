@@ -1,0 +1,4 @@
+rootProject.name = 'lonefit'
+include 'lonefit-api'
+include 'lonefit-batch'
+include 'lonefit-core'
