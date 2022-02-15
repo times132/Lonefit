@@ -7,8 +7,15 @@ spring:
     url: jdbc:mysql://localhost:3306/lonefit?userSSL=false&serverTimeZone=UTC
     username: times132
     password: times
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: true
+    show-sql: true
   batch:
     jdbc:
-      initialize-schema: never
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL5Dialect
+      initialize-schema: always
+
+logging.level.org.hibernate: info
