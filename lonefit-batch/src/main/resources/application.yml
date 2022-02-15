@@ -1,2 +1,14 @@
 server:
   port: 8082
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lonefit?userSSL=false&serverTimeZone=UTC
+    username: times132
+    password: times
+  batch:
+    jdbc:
+      initialize-schema: never
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
