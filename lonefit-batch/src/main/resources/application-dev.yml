@@ -1,0 +1,8 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+loa:
+  userId: "times134@naver.com"
+  password: "lonefit!8864"
