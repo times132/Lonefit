@@ -25,19 +25,7 @@ public class LoaDataService {
         Connection conn = Jsoup.connect(LOA_LOGIN_URL);
 
         try {
-//            Connection.Response response = conn
-//                    .method(Connection.Method.GET)
-//                    .execute();
-//
-//            Connection.Response login = conn
-//                    .cookies(response.cookies())
-//                    .data("user_id", userId, "user_pwd", password)
-//                    .method(Connection.Method.POST)
-//                    .timeout(5000)
-//                    .ignoreContentType(true)
-//                    .execute();
-//
-//            System.out.println(login);
+
             HashMap<String, String> reqData = new HashMap<>();
             reqData.put("firstCategory", "50000");
             reqData.put("secondCategory", "50010");
