@@ -1,0 +1,10 @@
+### IntelliJ IDEA ###
+.idea/*
+
+### Docker ###
+docker/lonefit/db/
+docker/mongo/db/
+docker/*.env
+!docker/sample.env
+
+Lonefit.iml

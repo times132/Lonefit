@@ -1,0 +1,44 @@
+version: '3.7'
+
+services:
+  db_vehicle:
+    image: mysql:8.0.23
+    platform: linux/amd64
+    container_name: lonefit-mysql
+    command:
+      - --explicit_defaults_for_timestamp
+      - --lower_case_table_names=1
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --range_optimizer_max_mem_size=16777216
+      - --skip-character-set-client-handshake
+    restart: always
+    environment:
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      TZ: Asia/Seoul
+    volumes:
+      - ./docker/mysql/db:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
+      - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "3308:3306"
+
+  mongodb:
+    image: mongo:3.6
+    container_name: lonefit-mongodb
+    restart: always
+    ports:
+      - 27018:27017
+    volumes:
+      - ./docker/mongo/db:/data/db
+      - ./docker/mongo/initdb/init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "${MONGO_INITDB_ROOT_USERNAME}"
+      MONGO_INITDB_ROOT_PASSWORD: "${MONGO_INITDB_ROOT_PASSWORD}"
+      MONGO_INITDB_USERNAME: "${MONGO_INITDB_USERNAME}"
+      MONGO_INITDB_PASSWORD: "${MONGO_INITDB_PASSWORD}"
+      MONGO_INITDB_DATABASE: "${MONGO_INITDB_DATABASE}"
